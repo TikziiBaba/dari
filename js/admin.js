@@ -153,6 +153,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // =====================================================
     // KULLANICILAR & ADMİN YÖNETİMİ
     // =====================================================
+    window.loadUsersPublic = loadUsers;
     async function loadUsers() {
         const container = document.getElementById('usersContainer');
         if (!container) return;

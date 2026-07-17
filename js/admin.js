@@ -1,13 +1,13 @@
 // Admin Panel Logic
 // Admin e-posta adresi — kendi adresinizle değiştirin
-const ADMIN_EMAIL = 'admin@darimedya.com'; // <-- BURASINı KENDİ ADMIN E-POSTANIZLA DEĞİŞTİRİN
+const ADMIN_EMAIL = 'dedyusuf99@gmail.com'; // <-- BURASINı KENDİ ADMIN E-POSTANIZLA DEĞİŞTİRİN
 
 document.addEventListener('DOMContentLoaded', async () => {
     const supabase = window._supabase;
 
-    const adminLoading   = document.getElementById('adminLoading');
-    const accessDenied   = document.getElementById('accessDenied');
-    const adminPanel     = document.getElementById('adminPanel');
+    const adminLoading = document.getElementById('adminLoading');
+    const accessDenied = document.getElementById('accessDenied');
+    const adminPanel = document.getElementById('adminPanel');
     const adminEmailDisp = document.getElementById('adminEmailDisplay');
     const adminLogoutBtn = document.getElementById('adminLogoutBtn');
 
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             currentUser = session.user;
             adminEmailDisp.textContent = currentUser.email;
             adminLoading.style.display = 'none';
-            adminPanel.style.display   = 'block';
+            adminPanel.style.display = 'block';
             loadMessages();
         } else {
             adminLoading.style.display = 'none';
@@ -82,20 +82,20 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Build table
             const serviceLabels = {
                 kurumsal: 'Kurumsal Tanıtım',
-                reklam:   'Reklam Filmi',
-                drone:    'Drone Çekimi',
-                emlak:    'Emlak Çekimi',
+                reklam: 'Reklam Filmi',
+                drone: 'Drone Çekimi',
+                emlak: 'Emlak Çekimi',
                 restoran: 'Restoran Çekimi',
                 otomotiv: 'Otomotiv Çekimi',
-                dugun:    'Düğün Çekimi',
-                sosyal:   'Sosyal Medya',
-                diger:    'Diğer'
+                dugun: 'Düğün Çekimi',
+                sosyal: 'Sosyal Medya',
+                diger: 'Diğer'
             };
 
             const rows = messages.map(msg => {
                 const date = new Date(msg.created_at);
-                const dateStr = date.toLocaleDateString('tr-TR', { day:'2-digit', month:'short', year:'numeric' });
-                const timeStr = date.toLocaleTimeString('tr-TR', { hour:'2-digit', minute:'2-digit' });
+                const dateStr = date.toLocaleDateString('tr-TR', { day: '2-digit', month: 'short', year: 'numeric' });
+                const timeStr = date.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
                 const label = serviceLabels[msg.service] || msg.service;
                 return `
                     <tr>
@@ -131,8 +131,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     function updateStats(messages, serviceLabels) {
-        const statTotal   = document.getElementById('statTotal');
-        const statToday   = document.getElementById('statToday');
+        const statTotal = document.getElementById('statTotal');
+        const statToday = document.getElementById('statToday');
         const statPopular = document.getElementById('statPopular');
 
         if (statTotal) statTotal.textContent = messages.length;

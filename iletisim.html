@@ -95,22 +95,18 @@
                 </div>
 
                 <!-- Right: Form -->
-                <div class="contact-form-wrapper reveal fade-right">
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-row">
-                            <div class="input-group">
-                                <label for="name">Ad Soyad</label>
-                                <input type="text" id="name" name="name" placeholder="Adınız Soyadınız" required>
-                            </div>
-                            <div class="input-group">
-                                <label for="phone">Telefon</label>
-                                <input type="tel" id="phone" name="phone" placeholder="+90 5__ ___ __ __">
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <label for="email">E-Posta</label>
-                            <input type="email" id="email" name="email" placeholder="e-posta@adresiniz.com" required>
-                        </div>
+                <div class="contact-form-wrapper reveal fade-right" id="contactFormWrapper">
+                    
+                    <div id="authRequiredMessage" style="display:none; text-align:center; padding: 40px 0;">
+                        <i class="fa-solid fa-lock" style="font-size:3rem; color:var(--clr-primary); margin-bottom:20px;"></i>
+                        <h3 style="font-family:var(--font-heading); margin-bottom:10px;">Giriş Yapmanız Gerekiyor</h3>
+                        <p style="color:var(--clr-text-muted); margin-bottom:20px;">Bizimle iletişime geçmek için lütfen sisteme giriş yapın veya kayıt olun.</p>
+                        <a href="login.html" class="btn btn-primary">Giriş Yap</a>
+                        <a href="register.html" class="btn btn-outline" style="margin-left:10px;">Kayıt Ol</a>
+                    </div>
+
+                    <form class="contact-form" id="contactForm" style="display:none;">
+                        <div id="contactMessage"></div>
                         <div class="input-group">
                             <label for="service">İlgilendiğiniz Hizmet</label>
                             <select id="service" name="service" required>
@@ -130,7 +126,7 @@
                             <label for="message">Mesajınız</label>
                             <textarea id="message" name="message" placeholder="Projeniz hakkında kısaca bilgi verin..." rows="6" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block">
+                        <button type="submit" class="btn btn-primary btn-block" id="sendMessageBtn">
                             <i class="fa-solid fa-paper-plane"></i>&nbsp; Mesaj Gönder
                         </button>
                     </form>
@@ -159,6 +155,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/auth.js"></script>
+    <script src="js/contact.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

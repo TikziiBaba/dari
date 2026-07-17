@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Darı Medya</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .admin-body {
+            min-height: 100vh;
+            background-color: var(--clr-bg);
+            padding: 0;
+        }
+
+        .admin-topbar {
+            background: var(--clr-bg-glass);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,215,0,0.15);
+            padding: 16px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .admin-topbar .admin-brand {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 900;
+        }
+        .admin-topbar .admin-brand span { color: var(--clr-primary); }
+
+        .admin-topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .admin-email {
+            color: var(--clr-text-muted);
+            font-size: 0.9rem;
+        }
+
+        .admin-layout {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            min-height: calc(100vh - 65px);
+        }
+
+        .admin-sidebar {
+            background-color: var(--clr-bg-alt);
+            border-right: 1px solid rgba(255,255,255,0.05);
+            padding: 30px 0;
+        }
+
+        .admin-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 24px;
+            color: var(--clr-text-muted);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            font-size: 0.95rem;
+            border-left: 3px solid transparent;
+        }
+
+        .admin-nav-item:hover,
+        .admin-nav-item.active {
+            background-color: rgba(255,215,0,0.05);
+            color: var(--clr-primary);
+            border-left-color: var(--clr-primary);
+        }
+
+        .admin-nav-item i {
+            width: 18px;
+            text-align: center;
+        }
+
+        .admin-content {
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .admin-page { display: none; }
+        .admin-page.active { display: block; }
+
+        .admin-header {
+            margin-bottom: 30px;
+        }
+
+        .admin-header h1 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .admin-header p {
+            color: var(--clr-text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: var(--clr-bg-alt);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .stat-card .stat-icon {
+            width: 52px;
+            height: 52px;
+            background: rgba(255,215,0,0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--clr-primary);
+        }
+
+        .stat-card .stat-info h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            line-height: 1;
+            color: var(--clr-primary);
+        }
+
+        .stat-card .stat-info p {
+            font-size: 0.85rem;
+            color: var(--clr-text-muted);
+            margin-top: 4px;
+        }
+
+        /* Messages Table */
+        .messages-table-wrapper {
+            background: var(--clr-bg-alt);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .messages-table-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .messages-table-header h2 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+        }
+
+        .refresh-btn {
+            background: rgba(255,215,0,0.1);
+            border: 1px solid rgba(255,215,0,0.3);
+            color: var(--clr-primary);
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-family: var(--font-body);
+            transition: var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .refresh-btn:hover {
+            background: rgba(255,215,0,0.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: rgba(255,255,255,0.03);
+        }
+
+        thead th {
+            padding: 14px 20px;
+            text-align: left;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--clr-text-muted);
+            font-weight: 600;
+        }
+
+        tbody tr {
+            border-top: 1px solid rgba(255,255,255,0.03);
+            transition: var(--transition-fast);
+        }
+
+        tbody tr:hover {
+            background: rgba(255,215,0,0.03);
+        }
+
+        tbody td {
+            padding: 16px 20px;
+            font-size: 0.9rem;
+            vertical-align: top;
+        }
+
+        td.message-text {
+            color: var(--clr-text-muted);
+            max-width: 350px;
+            line-height: 1.5;
+        }
+
+        .service-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background: rgba(255,215,0,0.1);
+            border: 1px solid rgba(255,215,0,0.3);
+            color: var(--clr-primary);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .date-cell {
+            color: var(--clr-text-muted);
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--clr-text-muted);
+        }
+
+        .no-data i {
+            font-size: 3rem;
+            color: rgba(255,215,0,0.2);
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        /* Access Denied */
+        .access-denied {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .access-denied i {
+            font-size: 5rem;
+            color: var(--clr-primary);
+            margin-bottom: 20px;
+        }
+
+        .access-denied h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .access-denied p {
+            color: var(--clr-text-muted);
+            margin-bottom: 25px;
+        }
+
+        /* Loading */
+        .loading-spinner {
+            text-align: center;
+            padding: 40px;
+            color: var(--clr-text-muted);
+        }
+
+        .loading-spinner i {
+            font-size: 2rem;
+            color: var(--clr-primary);
+            animation: spin 1s linear infinite;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Home auth notice */
+        .home-auth-notice {
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            color: var(--clr-text-muted);
+            font-size: 0.95rem;
+        }
+        .home-auth-notice i {
+            color: var(--clr-primary);
+        }
+    </style>
+</head>
+<body class="admin-body no-loader">
+
+    <!-- Access Check (shown while loading) -->
+    <div id="adminLoading" style="display:flex; align-items:center; justify-content:center; min-height:100vh;">
+        <div style="text-align:center;">
+            <i class="fa-solid fa-spinner fa-spin" style="font-size:3rem; color:var(--clr-primary);"></i>
+            <p style="margin-top:16px; color:var(--clr-text-muted);">Yetki kontrol ediliyor...</p>
+        </div>
+    </div>
+
+    <!-- Access Denied -->
+    <div id="accessDenied" class="access-denied" style="display:none;">
+        <i class="fa-solid fa-ban"></i>
+        <h2>Erişim Reddedildi</h2>
+        <p>Bu sayfaya erişmek için yönetici hesabıyla giriş yapmanız gerekmektedir.</p>
+        <a href="index.html" class="btn btn-primary">Ana Sayfaya Dön</a>
+    </div>
+
+    <!-- Admin Panel -->
+    <div id="adminPanel" style="display:none;">
+
+        <!-- Top Bar -->
+        <div class="admin-topbar">
+            <div class="admin-brand">DARI<span>MEDYA</span> <span style="font-size:0.9rem; color:var(--clr-text-muted); font-weight:400;">Admin</span></div>
+            <div class="admin-topbar-right">
+                <span class="admin-email" id="adminEmailDisplay"></span>
+                <a href="index.html" class="btn btn-outline btn-sm">Siteye Dön</a>
+                <button id="adminLogoutBtn" class="btn btn-outline btn-sm">Çıkış Yap</button>
+            </div>
+        </div>
+
+        <!-- Layout -->
+        <div class="admin-layout">
+
+            <!-- Sidebar -->
+            <aside class="admin-sidebar">
+                <div class="admin-nav-item active" data-page="messages">
+                    <i class="fa-solid fa-inbox"></i> Gelen Mesajlar
+                </div>
+                <div class="admin-nav-item" data-page="stats">
+                    <i class="fa-solid fa-chart-bar"></i> İstatistikler
+                </div>
+                <a href="index.html" class="admin-nav-item" style="text-decoration:none;">
+                    <i class="fa-solid fa-house"></i> Siteye Git
+                </a>
+            </aside>
+
+            <!-- Content -->
+            <main class="admin-content">
+
+                <!-- Messages Page -->
+                <div class="admin-page active" id="page-messages">
+                    <div class="admin-header">
+                        <h1>Gelen <span style="color:var(--clr-primary);">Mesajlar</span></h1>
+                        <p>Ziyaretçilerin iletişim formu aracılığıyla gönderdiği mesajlar.</p>
+                    </div>
+                    <div class="messages-table-wrapper">
+                        <div class="messages-table-header">
+                            <h2>Tüm Mesajlar</h2>
+                            <button class="refresh-btn" id="refreshBtn">
+                                <i class="fa-solid fa-arrows-rotate"></i> Yenile
+                            </button>
+                        </div>
+                        <div id="messagesContainer">
+                            <div class="loading-spinner"><i class="fa-solid fa-spinner"></i><p>Mesajlar yükleniyor...</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Page -->
+                <div class="admin-page" id="page-stats">
+                    <div class="admin-header">
+                        <h1>İstatistik<span style="color:var(--clr-primary);">ler</span></h1>
+                        <p>Genel site ve mesaj istatistikleri.</p>
+                    </div>
+                    <div class="stats-grid" id="statsGrid">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div class="stat-info"><h3 id="statTotal">-</h3><p>Toplam Mesaj</p></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fa-solid fa-calendar-day"></i></div>
+                            <div class="stat-info"><h3 id="statToday">-</h3><p>Bugün Gelen</p></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fa-solid fa-star"></i></div>
+                            <div class="stat-info"><h3 id="statPopular">-</h3><p>En Çok İstenen</p></div>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

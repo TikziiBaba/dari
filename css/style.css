@@ -1355,3 +1355,28 @@ footer {
     padding: 8px 16px;
     font-size: 0.85rem;
 }
+
+/* ==========================================================================
+   Home Contact CTA Auth Notice
+   ========================================================================== */
+.contact-cta {
+    margin-top: 30px;
+}
+
+.home-auth-notice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 12px 20px;
+    background: rgba(255,215,0,0.05);
+    border: 1px solid rgba(255,215,0,0.15);
+    border-radius: 6px;
+    color: var(--clr-text-muted);
+    font-size: 0.95rem;
+}
+
+.home-auth-notice i {
+    color: var(--clr-primary);
+}

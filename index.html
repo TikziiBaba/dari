@@ -139,7 +139,7 @@
                 </div>
                 
                 <div class="service-card service-card--compact reveal fade-up" style="transition-delay: 0.4s;">
-                    <div class="service-icon"><i class="fa-solid fa-rings-wedding"></i></div>
+                    <div class="service-icon"><i class="fa-solid fa-ring"></i></div>
                     <h3>Düğün Çekimleri</h3>
                 </div>
                 
@@ -235,7 +235,17 @@
                 </div>
 
                 <div class="contact-cta">
-                    <a href="iletisim.html" class="btn btn-primary">Bize Mesaj Gönder</a>
+                    <div id="homeAuthMsg" style="display:none;" class="home-auth-notice">
+                        <i class="fa-solid fa-lock"></i>
+                        <span>Mesaj göndermek için önce hesap oluşturmanız gerekmektedir.</span>
+                    </div>
+                    <div id="homeAuthBtns">
+                        <a href="register.html" class="btn btn-primary">Hesap Oluştur &amp; Mesaj Gönder</a>
+                        <a href="login.html" class="btn btn-outline" style="margin-left:12px;">Giriş Yap</a>
+                    </div>
+                    <div id="homeCta" style="display:none;">
+                        <a href="iletisim.html" class="btn btn-primary">Bize Mesaj Gönder</a>
+                    </div>
                 </div>
             </div>
         </div>

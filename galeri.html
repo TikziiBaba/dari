@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri | Darı Medya</title>
+    <meta name="description" content="Darı Medya'nın tamamladığı çekim projelerinden öne çıkan kareler.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="no-loader">
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">DARI<span>MEDYA</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="index.html#about">Hakkımızda</a></li>
+                <li><a href="hizmetler.html">Hizmetlerimiz</a></li>
+                <li><a href="galeri.html" class="active">Galeri</a></li>
+                <li><a href="iletisim.html" class="btn btn-primary">İletişime Geç</a></li>
+                <div id="auth-nav-items" style="display:contents;"></div>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero-bg">
+            <img src="assets/real_estate.png" alt="Galeri">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="container page-hero-content">
+            <h1>İşlerimizden <span>Kareler</span></h1>
+            <p>Tamamladığımız projelerden öne çıkan anlara göz atın.</p>
+        </div>
+    </section>
+
+    <!-- Gallery Filter -->
+    <section class="gallery-section section">
+        <div class="container">
+
+            <!-- Filter Tabs -->
+            <div class="gallery-filters reveal fade-up">
+                <button class="filter-btn active" data-filter="all">Tümü</button>
+                <button class="filter-btn" data-filter="drone">Drone</button>
+                <button class="filter-btn" data-filter="emlak">Emlak</button>
+                <button class="filter-btn" data-filter="dugun">Düğün</button>
+                <button class="filter-btn" data-filter="otomotiv">Otomotiv</button>
+                <button class="filter-btn" data-filter="restoran">Restoran</button>
+                <button class="filter-btn" data-filter="kurumsal">Kurumsal</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="gallery-grid reveal fade-up">
+
+                <!-- Mevcut (örnek) görseller -->
+                <div class="gallery-item" data-category="emlak">
+                    <img src="assets/real_estate.png" alt="Emlak Çekimi">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-content">
+                            <span class="gallery-tag">Emlak</span>
+                            <h3>Lüks Villa</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="dugun">
+                    <img src="assets/wedding_shot.png" alt="Düğün Çekimi">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-content">
+                            <span class="gallery-tag">Düğün</span>
+                            <h3>Sinematik Düğün</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="drone">
+                    <img src="assets/drone_shot.png" alt="Drone Çekimi">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-content">
+                            <span class="gallery-tag">Drone</span>
+                            <h3>Havadan Çekim</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Boş placeholder'lar (siz ileride kendi fotoğraflarınızı ekleyeceksiniz) -->
+                <!-- 
+                    Fotoğraf eklemek için:
+                    1. Fotoğrafı assets/ klasörüne kopyalayın.
+                    2. Aşağıdaki bloklardan birinin img src özelliğini değiştirin.
+                    3. data-category'yi uygun kategoriyle güncelleyin.
+                    4. Başlık ve etiket metinlerini düzenleyin.
+                    Kategoriler: drone, emlak, dugun, otomotiv, restoran, kurumsal
+                -->
+
+                <div class="gallery-item gallery-item--placeholder" data-category="otomotiv">
+                    <div class="placeholder-inner">
+                        <i class="fa-solid fa-car"></i>
+                        <p>Otomotiv Çekimi</p>
+                        <span>Yakında Eklenecek</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item gallery-item--placeholder" data-category="restoran">
+                    <div class="placeholder-inner">
+                        <i class="fa-solid fa-utensils"></i>
+                        <p>Restoran Çekimi</p>
+                        <span>Yakında Eklenecek</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item gallery-item--placeholder" data-category="kurumsal">
+                    <div class="placeholder-inner">
+                        <i class="fa-solid fa-building"></i>
+                        <p>Kurumsal Tanıtım</p>
+                        <span>Yakında Eklenecek</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item gallery-item--placeholder" data-category="drone">
+                    <div class="placeholder-inner">
+                        <i class="fa-solid fa-plane"></i>
+                        <p>Drone Çekimi</p>
+                        <span>Yakında Eklenecek</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item gallery-item--placeholder" data-category="emlak">
+                    <div class="placeholder-inner">
+                        <i class="fa-solid fa-house"></i>
+                        <p>Emlak Çekimi</p>
+                        <span>Yakında Eklenecek</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item gallery-item--placeholder" data-category="dugun">
+                    <div class="placeholder-inner">
+                        <i class="fa-solid fa-rings-wedding"></i>
+                        <p>Düğün Çekimi</p>
+                        <span>Yakında Eklenecek</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item gallery-item--placeholder" data-category="otomotiv">
+                    <div class="placeholder-inner">
+                        <i class="fa-solid fa-car"></i>
+                        <p>Otomotiv Çekimi</p>
+                        <span>Yakında Eklenecek</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item gallery-item--placeholder" data-category="restoran">
+                    <div class="placeholder-inner">
+                        <i class="fa-solid fa-utensils"></i>
+                        <p>Restoran Çekimi</p>
+                        <span>Yakında Eklenecek</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item gallery-item--placeholder" data-category="kurumsal">
+                    <div class="placeholder-inner">
+                        <i class="fa-solid fa-film"></i>
+                        <p>Reklam Filmi</p>
+                        <span>Yakında Eklenecek</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="gallery-cta section">
+        <div class="container">
+            <div class="cta-box reveal fade-up">
+                <h2>Sizin için de bir proje hazırlayalım.</h2>
+                <p>Hayalinizdeki prodüksiyonu konuşmak için bize ulaşın.</p>
+                <a href="iletisim.html" class="btn btn-primary">İletişime Geç</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <h2>DARI<span>MEDYA</span></h2>
+                <p>Profesyonel prodüksiyon ve yaratıcı çözümler.</p>
+            </div>
+            <nav class="footer-nav">
+                <a href="index.html">Ana Sayfa</a>
+                <a href="hizmetler.html">Hizmetlerimiz</a>
+                <a href="galeri.html">Galeri</a>
+                <a href="iletisim.html">İletişim</a>
+            </nav>
+            <p class="copyright">&copy; 2026 Darı Medya. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/gallery.js"></script>
+</body>
+</html>

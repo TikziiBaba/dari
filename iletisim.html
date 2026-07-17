@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim | Darı Medya</title>
+    <meta name="description" content="Darı Medya ile iletişime geçin. Projenizi konuşalım.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="no-loader">
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">DARI<span>MEDYA</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="index.html#about">Hakkımızda</a></li>
+                <li><a href="hizmetler.html">Hizmetlerimiz</a></li>
+                <li><a href="galeri.html">Galeri</a></li>
+                <li><a href="iletisim.html" class="btn btn-primary active">İletişime Geç</a></li>
+                <div id="auth-nav-items" style="display:contents;"></div>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero page-hero--short">
+        <div class="page-hero-bg">
+            <img src="assets/hero_camera.png" alt="İletişim">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="container page-hero-content">
+            <h1>Projelerinizi <span>Konuşalım</span></h1>
+            <p>Bir fikriniz mi var? Hadi hayata geçirelim.</p>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="section contact-page">
+        <div class="container">
+            <div class="contact-page-grid">
+
+                <!-- Left: Info -->
+                <div class="contact-info reveal fade-left">
+                    <h2 class="section-title">Bize <span>Ulaşın</span></h2>
+                    <p>Projeleriniz için teklif almak, sorularınızı iletmek veya sadece merhaba demek için aşağıdaki formu doldurun ya da doğrudan iletişime geçin.</p>
+
+                    <div class="contact-details">
+                        <div class="detail-item">
+                            <div class="icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <div>
+                                <h4>Adres</h4>
+                                <p>Medya Plaza, Levent, İstanbul</p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="icon"><i class="fa-solid fa-phone"></i></div>
+                            <div>
+                                <h4>Telefon</h4>
+                                <p>+90 555 123 45 67</p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div>
+                                <h4>E-Posta</h4>
+                                <p>hello@darimedya.com</p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="icon"><i class="fa-solid fa-clock"></i></div>
+                            <div>
+                                <h4>Çalışma Saatleri</h4>
+                                <p>Pzt – Cuma: 09:00 – 18:00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" title="Vimeo"><i class="fa-brands fa-vimeo-v"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- Right: Form -->
+                <div class="contact-form-wrapper reveal fade-right">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label for="name">Ad Soyad</label>
+                                <input type="text" id="name" name="name" placeholder="Adınız Soyadınız" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="phone">Telefon</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+90 5__ ___ __ __">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="email">E-Posta</label>
+                            <input type="email" id="email" name="email" placeholder="e-posta@adresiniz.com" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="service">İlgilendiğiniz Hizmet</label>
+                            <select id="service" name="service" required>
+                                <option value="" disabled selected>Seçiniz...</option>
+                                <option value="kurumsal">Kurumsal Tanıtım</option>
+                                <option value="reklam">Reklam Filmi</option>
+                                <option value="drone">Drone Çekimi</option>
+                                <option value="emlak">Emlak Çekimi</option>
+                                <option value="restoran">Restoran Çekimi</option>
+                                <option value="otomotiv">Otomotiv Çekimi</option>
+                                <option value="dugun">Düğün Çekimi</option>
+                                <option value="sosyal">Sosyal Medya İçerikleri</option>
+                                <option value="diger">Diğer</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="message">Mesajınız</label>
+                            <textarea id="message" name="message" placeholder="Projeniz hakkında kısaca bilgi verin..." rows="6" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <i class="fa-solid fa-paper-plane"></i>&nbsp; Mesaj Gönder
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <h2>DARI<span>MEDYA</span></h2>
+                <p>Profesyonel prodüksiyon ve yaratıcı çözümler.</p>
+            </div>
+            <nav class="footer-nav">
+                <a href="index.html">Ana Sayfa</a>
+                <a href="hizmetler.html">Hizmetlerimiz</a>
+                <a href="galeri.html">Galeri</a>
+                <a href="iletisim.html">İletişim</a>
+            </nav>
+            <p class="copyright">&copy; 2026 Darı Medya. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

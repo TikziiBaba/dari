@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayıt Ol | Darı Medya</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="no-loader auth-body">
+    
+    <div class="auth-container">
+        <a href="index.html" class="auth-logo">DARI<span>MEDYA</span></a>
+        
+        <div class="auth-card">
+            <h2>Kayıt Ol</h2>
+            <p>Darı Medya ayrıcalıklarından yararlanmak için hesap oluşturun.</p>
+            
+            <div id="authMessage"></div>
+            
+            <form id="registerForm">
+                <div class="input-group">
+                    <label for="registerEmail">E-Posta</label>
+                    <input type="email" id="registerEmail" required placeholder="ornek@mail.com">
+                </div>
+                <div class="input-group">
+                    <label for="registerPassword">Şifre</label>
+                    <input type="password" id="registerPassword" required placeholder="••••••••" minlength="6">
+                </div>
+                <div class="input-group">
+                    <label for="registerConfirmPassword">Şifreyi Tekrar Girin</label>
+                    <input type="password" id="registerConfirmPassword" required placeholder="••••••••" minlength="6">
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block">Hesap Oluştur</button>
+            </form>
+            
+            <div class="auth-footer">
+                Zaten hesabınız var mı? <a href="login.html">Giriş Yap</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

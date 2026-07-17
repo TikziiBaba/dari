@@ -4,8 +4,6 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 
 // CDN UMD build window.supabase olarak inject eder
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-// Diğer script'lerin (contact.js, admin.js) kullanması için global'e yaz
 window._supabase = sb;
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -19,7 +17,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         try {
             const { data: { session } } = await sb.auth.getSession();
 
-            // Navbar güncelle
             if (authNavItems) {
                 if (session) {
                     authNavItems.innerHTML = `
@@ -37,7 +34,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
             }
 
-            // Anasayfa CTA
             if (homeAuthBtns && homeCta) {
                 if (session) {
                     if (homeAuthMsg) homeAuthMsg.style.display = 'none';
@@ -85,6 +81,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (error) {
                 messageDiv.innerHTML = `<div class="alert alert-error">${error.message}</div>`;
             } else {
+                // Kullanıcı profilini kaydet
+                if (data.user) {
+                    await sb.from('user_profiles').upsert({
+                        id: data.user.id,
+                        email: data.user.email
+                    });
+                }
                 messageDiv.innerHTML = `<div class="alert alert-success">Kayıt başarılı! Yönlendiriliyorsunuz...</div>`;
                 registerForm.reset();
                 setTimeout(() => { window.location.href = 'index.html'; }, 1500);

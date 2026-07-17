@@ -2,9 +2,8 @@
 const SUPABASE_URL = 'https://uclcrkbvtvflnepnlevn.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVjbGNya2J2dHZmbG5lcG5sZXZuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQyNjc2OTYsImV4cCI6MjA5OTg0MzY5Nn0.vfxAPZml_RUZQuI1xgLsW2MEDX2ttY4nyQgHH0xPFCw';
 
-// CDN @supabase/supabase-js@2 ile init
-// UMD build global olarak 'supabase' adını kullanır (window.supabase değil)
-const sb = (window.supabase || self.supabase).createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+// CDN UMD build window.supabase olarak inject eder
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // Diğer script'lerin (contact.js, admin.js) kullanması için global'e yaz
 window._supabase = sb;

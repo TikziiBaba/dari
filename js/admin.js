@@ -1,6 +1,6 @@
 // Admin Panel Logic
 // Admin e-posta adresi — kendi adresinizle değiştirin
-const ADMIN_EMAIL = 'admin@darimedya.com'; // <-- BURASINı KENDİ ADMIN E-POSTANIZLA DEĞİŞTİRİN
+const ADMIN_EMAIL = 'dedyusuf99@gmail.com'; // <-- BURASINı KENDİ ADMIN E-POSTANIZLA DEĞİŞTİRİN
 
 document.addEventListener('DOMContentLoaded', async () => {
     const supabase = window._supabase;
